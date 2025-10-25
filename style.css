@@ -1,6 +1,15 @@
 body {
     background-color: #11071F;
     color: white;
+    --bg: #11071F;
+    --surface: #1A0B2E;
+    --text: #FFFFFF;
+    --muted: #AAA;
+    --accent: #7127BA;
+    --card-bg: #2C1250;
+    background-color: var(--bg);
+    color: var(--text);
+    padding-top: 64px; 
 }
 
 .top {
@@ -18,9 +27,24 @@ body {
     z-index: 1000;
 }
 
+
+.light-theme {
+    --bg: #e5e5e5;
+    --surface: #F5F5F7;
+    --text: #0B0B0B;
+    --muted: #5B5B5B;
+    --accent: #4B2FB7;
+    --card-bg: #FFFFFF;
+}
+
+.top {
+    background-color: var(--surface);
+    color: var(--text);
+}
+
 .top a {
     text-decoration: none;
-    color: white;
+    color: var(--text);
 }
 
 nav ul {
@@ -41,12 +65,6 @@ nav ul {
     color: #7127BA;
 }
 
-.intro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-}
 
 .intro p {
     margin: 0;
@@ -64,10 +82,10 @@ nav ul {
 .x {
     display: flex;
     gap: 20px;
-    margin-bottom: 8rem;
+    margin-bottom: 5vh;
     align-items: center;
-}
-
+    width: 50%;
+} 
 
 .abt {
     font-family: 'Preahvihear', cursive;
@@ -75,13 +93,11 @@ nav ul {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .abt2 {
-    display: flex;
-    flex-direction: column;
     width: 50%;
-   
 }
 
 .soft {
@@ -115,7 +131,7 @@ nav ul li {
 
 
 .card {
-    background-color: #2C1250;
+    background-color: var(--card-bg);
     border-radius: 15px;
     padding: 40px;
     display: flex;
@@ -146,6 +162,7 @@ nav ul li {
     font-size: 26px;
     font-weight: 600;
     margin: 0;
+    color: var(--text);
 }
 
 .card img {
@@ -154,9 +171,26 @@ nav ul li {
     margin-bottom: 15px;
 }
 
+#theme-toggle {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+body.light-theme #theme-toggle {
+    color: var(--text);
+    border-color: rgba(0,0,0,0.08);
+}
+
 .card h3 {
     color: white;
-    /* Белый цвет текста заголовка */
     margin-bottom: 10px;
     font-size: 1.2rem;
 }
@@ -167,8 +201,6 @@ nav ul li {
     font-size: 0.9rem;
 
 }
-
-
 
 
 .card:hover {
@@ -261,4 +293,38 @@ footer {
 
 #inf2 {
     font-size: 15px;
+}
+
+
+#scroll-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 200ms ease;
+    z-index: 1200;
+}
+
+#scroll-top.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    #scroll-top, #scroll-top.show { transition: none; }
 }
